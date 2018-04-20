@@ -9,7 +9,7 @@ services:
       - "8081:8080"
       - "5000:5000"
     extra_hosts:
-      - "dockerhost:IP_DO_TOMCAT"
+      - "dockerhost:IP_DA_MAQUINA_COM_TOMCAT"
   tomcat:
     image: tomcat:8.0-jre8
     container_name: tomcat
@@ -23,16 +23,16 @@ services:
     container_name: nginx
     restart: always
     volumes:
-      - certs:/etc/letsencrypt
+      - /etc/letsencrypt:/etc/letsencrypt
       - certs-data:/data/letsencrypt
       - "./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf"
     ports:
       - 80:80
       - 443:443
     extra_hosts:
-      - "tomcathost:IP_DO_TOMCAT"
+      - "tomcathost:IP_DA_MAQUINA_COM_TOMCAT"
     environment:
-      - DOCKER_DOMAIN:dominio.com
+    - DOMAIN:dominio.com
 volumes:
   certs:
   certs-data:
