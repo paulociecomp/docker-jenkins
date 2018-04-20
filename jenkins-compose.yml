@@ -15,7 +15,7 @@ services:
     container_name: tomcat
     restart: always
     volumes:
-      - "/opt/tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml"
+      - "./tomcat/conf/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml"
     ports:
       - "8080:8080"
   nginx:
